@@ -1,14 +1,21 @@
+ <form method="get" action="/quizzes">        
+    <p>
+      Buscar Pregunta:
+    </p>
 
+    <p>
+      <input type="text" name="search" value="" placeholder="Palabra" />
+      <input type="submit" value="Buscar">
+    </p>
+  </form>
 <table>
   <% for (var i in quizzes) { %>        
      <tr>
         <td>
            <a href="/quizzes/<%= quizzes[i].id %>"><%= quizzes[i].question %></a>
         </td>
-
         <% if (session.user) { %>
            <% if (session.user.isAdmin || session.user.id === quizzes[i].AuthorId) { %>
-
               <td>
                  <a href="/quizzes/<%= quizzes[i].id %>/edit"><button>editar</button></a>
               </td>

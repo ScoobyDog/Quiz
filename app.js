@@ -11,6 +11,8 @@ var methodOverride = require('method-override');
 
 var routes = require('./routes/index');
 
+var sessionController = require('./controllers/session_controller');
+
 var app = express();
 
 // view engine setup
@@ -31,6 +33,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(partials());
 app.use(flash());
+
+// Autologout
+
+app.use(sessionController.autologout);
 
 // Helper dinamico:
 app.use(function(req, res, next) {
